@@ -1,14 +1,8 @@
 import Counter from "@/client-components/counter";
 import PostCard from "@/server-components/post";
-
-interface PostPageProps {
-    params: {
-      id: string;
-    };
-}
   
-export default function PostPage({ params }: PostPageProps) {
-    const { id } = params;
+export default async function PostPage({ params }: {params: Promise<{ id: string }>}) {
+    const id = (await params).id;
 
     return (
         <div>
